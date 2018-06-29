@@ -2,9 +2,9 @@
 import {DeviceEventEmitter, NativeAppEventEmitter, NativeModules, Platform} from 'react-native';
 import async from 'async';
 import EventEmitter from 'eventemitter3';
+import type {MediaStateType} from "./MediaStates";
 import MediaStates from './MediaStates';
 import type {Callback, CallbackWithBoolean, CallbackWithPath, FsPath} from "./TypeDefs";
-import type {MediaStateType} from "./MediaStates";
 
 const RCTAudioRecorder = NativeModules.AudioRecorder;
 
@@ -161,7 +161,6 @@ export default class Recorder extends EventEmitter {
    * @return {any}
    */
   pause(callback: Callback): Promise<void> {
-    console.log('puase');
     const promise = new Promise(((resolve, reject) => {
       if (this._state >= MediaStates.RECORDING) {
         RCTAudioRecorder.pause(this._recorderId, (err) => {
@@ -189,7 +188,6 @@ export default class Recorder extends EventEmitter {
    * @return {any}
    */
   resume(callback: Callback): Promise<void> {
-    console.log('resume');
     const promise = new Promise(((resolve, reject) => {
       if (this.isPaused) {
         RCTAudioRecorder.resume(this._recorderId, (err) => {
@@ -219,7 +217,6 @@ export default class Recorder extends EventEmitter {
    * @return Promise<void>
    */
   stop(callback: ?Callback): Promise<void> {
-    console.log('stop');
     const promise = new Promise((resolve, reject) => {
       if (this._state >= MediaStates.RECORDING) {
         RCTAudioRecorder.stop(this._recorderId, err => {
@@ -264,10 +261,10 @@ export default class Recorder extends EventEmitter {
     const promise = new Promise((resolve, reject) => {
       if (this.isRecording) {
         this.pause(err => err ? reject(err) : resolve(true));
-      } else if(this.isPaused){
-        this.resume(err=> err ? reject(err) : resolve(false));
-      }else{
-        this.record(err=> err ? reject(err) : resolve(false));
+      } else if (this.isPaused) {
+        this.resume(err => err ? reject(err) : resolve(false));
+      } else {
+        this.record(err => err ? reject(err) : resolve(false));
       }
     });
 
