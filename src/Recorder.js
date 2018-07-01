@@ -160,7 +160,7 @@ export default class Recorder extends EventEmitter {
    * @param callback
    * @return {any}
    */
-  pause(callback: Callback): Promise<void> {
+  pause(callback?: Callback): Promise<void> {
     const promise = new Promise(((resolve, reject) => {
       if (this._state >= MediaStates.RECORDING) {
         RCTAudioRecorder.pause(this._recorderId, (err) => {
@@ -187,7 +187,11 @@ export default class Recorder extends EventEmitter {
    * @param callback
    * @return {any}
    */
-  resume(callback: Callback): Promise<void> {
+  resume(callback?: Callback): Promise<void> {
+    if (Platform.OS === 'ios') {
+      return this.record(callback);
+    }
+
     const promise = new Promise(((resolve, reject) => {
       if (this.isPaused) {
         RCTAudioRecorder.resume(this._recorderId, (err) => {
@@ -216,7 +220,7 @@ export default class Recorder extends EventEmitter {
    * @param callback
    * @return Promise<void>
    */
-  stop(callback: ?Callback): Promise<void> {
+  stop(callback?: Callback): Promise<void> {
     const promise = new Promise((resolve, reject) => {
       if (this._state >= MediaStates.RECORDING) {
         RCTAudioRecorder.stop(this._recorderId, err => {
@@ -237,7 +241,7 @@ export default class Recorder extends EventEmitter {
    * @param callback
    * @return Promise<boolean>
    */
-  toggleRecord(callback: CallbackWithBoolean): Promise<boolean> {
+  toggleRecord(callback?: CallbackWithBoolean): Promise<boolean> {
     const promise = new Promise((resolve, reject) => {
       if (this._state === MediaStates.RECORDING) {
         this.stop(err => err ? reject(err) : resolve(true));
@@ -253,20 +257,16 @@ export default class Recorder extends EventEmitter {
 
 
   /**
-   * Helper class to pause and resume recording
-   * @param callback
-   * @return Promise<boolean>
+   * Helper class to toggle record /pause /resume
+   * @param callback  true if paused
+   * @return Promise<boolean> true if paused
    */
-  toggleRecordPause(callback: CallbackWithBoolean): Promise<boolean> {
+  toggleRecordPause(callback?: CallbackWithBoolean): Promise<boolean> {
     const promise = new Promise((resolve, reject) => {
       if (this.isRecording) {
         this.pause(err => err ? reject(err) : resolve(true));
       } else if (this.isPaused) {
-        if (Platform.OS === 'ios') {
-          this.record(err => err ? reject(err) : resolve(false));
-        } else {
-          this.resume(err => err ? reject(err) : resolve(false));
-        }
+        this.resume(err => err ? reject(err) : resolve(false));
       } else {
         this.record(err => err ? reject(err) : resolve(false));
       }
@@ -284,7 +284,7 @@ export default class Recorder extends EventEmitter {
    * @param callback
    * @return Promise<void>
    */
-  destroy(callback: CallbackWithBoolean): Promise<void> {
+  destroy(callback?: CallbackWithBoolean): Promise<void> {
     const promise = new Promise((resolve, reject) => {
       this._reset();
       RCTAudioRecorder.destroy(this._recorderId, err => err ? reject(err) : resolve());

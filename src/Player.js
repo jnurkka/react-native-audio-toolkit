@@ -6,7 +6,7 @@ import async from 'async';
 import EventEmitter from 'eventemitter3';
 import type {MediaStateType} from "./MediaStates";
 import MediaStates from './MediaStates';
-import type {Callback, CallbackWithBoolean,} from "./TypeDefs";
+import type {Callback, CallbackWithBoolean} from "./TypeDefs";
 
 const RCTAudioPlayer = NativeModules.AudioPlayer;
 type PlayerID = number;
@@ -63,7 +63,7 @@ export default class Player extends EventEmitter {
     }
   };
 
-  constructor(path: string, options: PlayerOptions = defaultPlayerOptions) {
+  constructor(path: string, options?: PlayerOptions = defaultPlayerOptions) {
     super();
     this._path = path;
     this._options = options;
