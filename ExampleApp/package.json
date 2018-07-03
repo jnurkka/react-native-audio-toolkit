@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.4",
-    "react-native-audio-toolkit": "file:.."
+    "@ybrain/react-native-audio-toolkit": "file:.."
   },
   "devDependencies": {
     "babel-jest": "23.2.0",

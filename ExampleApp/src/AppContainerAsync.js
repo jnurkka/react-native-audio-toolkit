@@ -1,7 +1,7 @@
 //@flow
 import React from 'react';
 import {Slider, StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
-import {Player, Recorder} from 'react-native-audio-toolkit';
+import {Player, Recorder} from '@ybrain/react-native-audio-toolkit';
 
 const remoteSoundUrl = 'https://archive.org/download/tsp1996-09-17.flac16/tsp1996-09-17d1t09.mp3';
 const recordFileName = 'myRecord.mp4';

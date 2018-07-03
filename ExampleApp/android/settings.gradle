@@ -1,5 +1,5 @@
 rootProject.name = 'ExampleApp'
 include ':react-native-audio-toolkit'
-project(':react-native-audio-toolkit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audio-toolkit/android')
+project(':react-native-audio-toolkit').projectDir = new File(rootProject.projectDir, '../node_modules/@ybrain/react-native-audio-toolkit/android')
 
 include ':app'
