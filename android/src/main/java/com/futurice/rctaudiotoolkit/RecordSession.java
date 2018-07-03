@@ -1,5 +1,6 @@
 package com.futurice.rctaudiotoolkit;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.media.MediaRecorder;
@@ -197,28 +198,42 @@ public class RecordSession {
         Log.d(TAG, id + ": Started");
     }
 
+    private boolean shouldReleaseFileOnPause() {
+        boolean releaseFileOnPause = false;
+        if (options.hasKey("releaseFileOnPause")) {
+            releaseFileOnPause = options.getBoolean("releaseFileOnPause");
+        }
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.N || releaseFileOnPause;
+    }
+
+    @SuppressLint("NewApi")
     public void resume() throws Exception {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (shouldReleaseFileOnPause()) {
+            if (isPaused) {
+                isPaused = false;
+                recorder = createRecorder(false);
+                recorder.prepare();
+                recorder.start();
+            }
+        } else {
             recorder.resume();
-        } else if (isPaused) {
-            isPaused = false;
-            recorder = createRecorder(false);
-            recorder.prepare();
-            recorder.start();
         }
         Log.d(TAG, id + ": Resumed");
     }
 
+    @SuppressLint("NewApi")
     public void pause() throws Exception {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            recorder.pause();
-        } else if (!isPaused) {
-            isPaused = true;
-            recorder.stop();
-            recorder.release();
-            recorder = null;
+        if (shouldReleaseFileOnPause()) {
+            if (!isPaused) {
+                isPaused = true;
+                recorder.stop();
+                recorder.release();
+                recorder = null;
 
-            appendFileIfResumed();
+                appendFileIfResumed();
+            }
+        } else {
+            recorder.pause();
         }
         Log.d(TAG, id + ": Paused");
     }

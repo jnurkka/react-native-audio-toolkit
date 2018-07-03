@@ -101,14 +101,19 @@ class AppContainer extends React.Component<{}, State> {
       channels: 2,
       sampleRate: 44100,
       quality: 'max',
+      releaseFileOnPause: true,
     });
 
     this.forceUpdate();
   };
 
   _toggleRecordPause = async () => {
-    await this.recorder.toggleRecordPause();
-    this.forceUpdate();
+    const isPaused = await this.recorder.toggleRecordPause();
+    if(isPaused){
+      this._reloadPlayer();
+    }else{
+      this.forceUpdate();
+    }
   };
 
   _stopRecord = async () => {
@@ -214,7 +219,7 @@ const Button = (props: ButtonStyle) =>
     style={[{backgroundColor: 'lightgrey', padding: 20}, props.style]}
     onPress={props.disabled ? undefined : props.onPress}
   >
-    <Text style={{color: props.disabled ? "grey" : "blue"}}>
+    <Text style={{color: props.disabled ? 'grey' : 'blue'}}>
       {props.title}
     </Text>
   </TouchableOpacity>;

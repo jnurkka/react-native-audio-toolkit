@@ -2,9 +2,9 @@
 import {DeviceEventEmitter, NativeAppEventEmitter, NativeModules, Platform} from 'react-native';
 import async from 'async';
 import EventEmitter from 'eventemitter3';
-import type {MediaStateType} from "./MediaStates";
+import type {MediaStateType} from './MediaStates';
 import MediaStates from './MediaStates';
-import type {Callback, CallbackWithBoolean, CallbackWithPath, FsPath} from "./TypeDefs";
+import type {Callback, CallbackWithBoolean, CallbackWithPath, FsPath} from './TypeDefs';
 
 const RCTAudioRecorder = NativeModules.AudioRecorder;
 
@@ -33,11 +33,24 @@ export type RecorderOptions = {
   encoder?: 'aac' | 'mp4' | 'webm' | 'ogg' | 'amr',
 
   /** Quality of the recording, iOS only. (default: 'medium') */
-  quality?: 'min' | 'low' | 'medium' | 'high' | 'max'
+  quality?: 'min' | 'low' | 'medium' | 'high' | 'max',
+
+  /**
+   * Only for Android over 7.0 API24
+   *
+   * Recorder releases record file resource on pause.
+   * If true the paused record file can be used to play.
+   *
+   * Default
+   * - Android over 7.0 API24 : false
+   * - Others : true
+   */
+  releaseFileOnPause?: boolean
 }
 
-const defaultRecorderOptions = {
+const defaultRecorderOptions: RecorderOptions = {
   autoDestroy: true,
+  releaseFileOnPause: false,
 };
 
 /**
@@ -89,7 +102,6 @@ export default class Recorder extends EventEmitter {
 
     this.emit(event, data);
   }
-
 
   /**
    * Prepare recording to the file provided during initialization.
@@ -254,7 +266,6 @@ export default class Recorder extends EventEmitter {
       ? promise
       : promise.then((result) => callback(null, result)).catch(callback);
   }
-
 
   /**
    * Helper class to toggle record /pause /resume
