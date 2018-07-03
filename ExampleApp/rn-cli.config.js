@@ -12,7 +12,7 @@ var config = {
   },
   getBlacklistRE() {
     return blacklist([
-      /[/\\]Users[/\\]sangwoo[/\\]workspace[/\\]react-native-audio-toolkit[/\\]node_modules[/\\]react-native[/\\].*/
+      /[/\\]Users[/\\]hojunlee[/\\]repository[/\\]react-native-audio-toolkit[/\\]node_modules[/\\]react-native[/\\].*/
     ]);
   },
   getProjectRoots() {
@@ -20,7 +20,7 @@ var config = {
       // Keep your project directory.
       path.resolve(__dirname),
       // Include your forked package as a new root.
-      path.resolve('/Users/sangwoo/workspace/react-native-audio-toolkit')
+      path.resolve('/Users/hojunlee/repository/react-native-audio-toolkit')
     ];
   }
 };

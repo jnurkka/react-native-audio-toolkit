@@ -262,7 +262,7 @@ export default class Recorder extends EventEmitter {
       if (this.isRecording) {
         this.pause(err => err ? reject(err) : resolve(true));
       } else if (this.isPaused) {
-        this.resume(err => err ? reject(err) : resolve(false));
+        this.record(err => err ? reject(err) : resolve(false));
       } else {
         this.record(err => err ? reject(err) : resolve(false));
       }
