@@ -251,7 +251,9 @@ public class RecordSession {
     }
 
     public void destroy() {
-        recorder.release();
-        Log.d(TAG, id + ": Destroyed.");
+        if (recorder != null) {
+            recorder.release();
+            Log.d(TAG, id + ": Destroyed.");
+        }
     }
 }
