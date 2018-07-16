@@ -241,10 +241,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../**",
-					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/../../node_modules/react-native/React/**",
-					"$(SRCROOT)/../../ExampleApp/node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../../react-native/React/**",
 					"$(SRCROOT)/../../../../node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
@@ -259,10 +256,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../**",
-					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/../../node_modules/react-native/React/**",
-					"$(SRCROOT)/../../ExampleApp/node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../../react-native/React/**",
 					"$(SRCROOT)/../../../../node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
