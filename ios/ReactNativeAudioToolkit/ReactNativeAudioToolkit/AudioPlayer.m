@@ -160,7 +160,8 @@ RCT_EXPORT_METHOD(prepare:(nonnull NSNumber*)playerId
     
     // Callback when ready / failed
     if (player.status == AVPlayerStatusReadyToPlay) {
-        callback(@[[NSNull null]]);
+        callback(@[[NSNull null], @{@"duration": @(CMTimeGetSeconds(player.currentItem.asset.duration) * 1000),
+                                    @"position": @(CMTimeGetSeconds(player.currentTime) * 1000)}]);
     } else {
         NSDictionary* dict = [Helpers errObjWithCode:@"preparefail"
                                          withMessage:[NSString stringWithFormat:@"Preparing player failed"]];
