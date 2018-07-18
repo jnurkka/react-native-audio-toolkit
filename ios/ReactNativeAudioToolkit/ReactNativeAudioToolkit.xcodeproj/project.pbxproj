@@ -27,6 +27,41 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F6303D720FDB05D006E4BF8 /* EZPlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZPlot.h; sourceTree = "<group>"; };
+		0F6303D820FDB05D006E4BF8 /* EZAudioOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioOSX.h; sourceTree = "<group>"; };
+		0F6303D920FDB05D006E4BF8 /* EZAudioUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioUtilities.h; sourceTree = "<group>"; };
+		0F6303DA20FDB05D006E4BF8 /* EZAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudio.h; sourceTree = "<group>"; };
+		0F6303DB20FDB05D006E4BF8 /* EZMicrophone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZMicrophone.m; sourceTree = "<group>"; };
+		0F6303DC20FDB05D006E4BF8 /* EZAudioFloatData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioFloatData.m; sourceTree = "<group>"; };
+		0F6303DD20FDB05D006E4BF8 /* TPCircularBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
+		0F6303DE20FDB05D006E4BF8 /* EZAudioPlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioPlot.h; sourceTree = "<group>"; };
+		0F6303DF20FDB05D006E4BF8 /* EZAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioPlayer.h; sourceTree = "<group>"; };
+		0F6303E020FDB05D006E4BF8 /* EZAudioFloatConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioFloatConverter.h; sourceTree = "<group>"; };
+		0F6303E120FDB05D006E4BF8 /* EZOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZOutput.h; sourceTree = "<group>"; };
+		0F6303E220FDB05D006E4BF8 /* EZRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZRecorder.h; sourceTree = "<group>"; };
+		0F6303E320FDB05D006E4BF8 /* EZAudioFFT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioFFT.m; sourceTree = "<group>"; };
+		0F6303E420FDB05D006E4BF8 /* EZAudioPlotGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioPlotGL.h; sourceTree = "<group>"; };
+		0F6303E520FDB05D006E4BF8 /* EZAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioFile.h; sourceTree = "<group>"; };
+		0F6303E620FDB05D006E4BF8 /* EZAudioDisplayLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioDisplayLink.h; sourceTree = "<group>"; };
+		0F6303E720FDB05D006E4BF8 /* EZAudioDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioDevice.h; sourceTree = "<group>"; };
+		0F6303E820FDB05D006E4BF8 /* EZPlot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZPlot.m; sourceTree = "<group>"; };
+		0F6303E920FDB05D006E4BF8 /* EZAudioPlot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioPlot.m; sourceTree = "<group>"; };
+		0F6303EA20FDB05D006E4BF8 /* EZAudioPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioPlayer.m; sourceTree = "<group>"; };
+		0F6303EB20FDB05D006E4BF8 /* TPCircularBuffer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
+		0F6303EC20FDB05D006E4BF8 /* EZAudioFloatData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioFloatData.h; sourceTree = "<group>"; };
+		0F6303ED20FDB05D006E4BF8 /* EZMicrophone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZMicrophone.h; sourceTree = "<group>"; };
+		0F6303EE20FDB05D006E4BF8 /* EZAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudio.m; sourceTree = "<group>"; };
+		0F6303EF20FDB05D006E4BF8 /* EZAudioUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioUtilities.m; sourceTree = "<group>"; };
+		0F6303F020FDB05D006E4BF8 /* EZRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZRecorder.m; sourceTree = "<group>"; };
+		0F6303F120FDB05D006E4BF8 /* EZOutput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZOutput.m; sourceTree = "<group>"; };
+		0F6303F220FDB05D006E4BF8 /* EZAudioFloatConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioFloatConverter.m; sourceTree = "<group>"; };
+		0F6303F320FDB05D006E4BF8 /* EZAudioDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioDevice.m; sourceTree = "<group>"; };
+		0F6303F420FDB05D006E4BF8 /* EZAudioDisplayLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioDisplayLink.m; sourceTree = "<group>"; };
+		0F6303F520FDB05D006E4BF8 /* EZAudioFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioFile.m; sourceTree = "<group>"; };
+		0F6303F620FDB05D006E4BF8 /* EZAudioPlotGL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZAudioPlotGL.m; sourceTree = "<group>"; };
+		0F6303F720FDB05D006E4BF8 /* EZAudioFFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioFFT.h; sourceTree = "<group>"; };
+		0F6303F820FDB05D006E4BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F6303F920FDB05D006E4BF8 /* EZAudioiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZAudioiOS.h; sourceTree = "<group>"; };
 		5E05F28B1D3E538600A0D09A /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		5E05F28C1D3E538600A0D09A /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		5E21FB501D3FBD0B00A922AE /* ReactPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactPlayer.h; sourceTree = "<group>"; };
@@ -51,6 +86,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F6303D620FDB05D006E4BF8 /* EZAudio */ = {
+			isa = PBXGroup;
+			children = (
+				0F6303D720FDB05D006E4BF8 /* EZPlot.h */,
+				0F6303D820FDB05D006E4BF8 /* EZAudioOSX.h */,
+				0F6303D920FDB05D006E4BF8 /* EZAudioUtilities.h */,
+				0F6303DA20FDB05D006E4BF8 /* EZAudio.h */,
+				0F6303DB20FDB05D006E4BF8 /* EZMicrophone.m */,
+				0F6303DC20FDB05D006E4BF8 /* EZAudioFloatData.m */,
+				0F6303DD20FDB05D006E4BF8 /* TPCircularBuffer.h */,
+				0F6303DE20FDB05D006E4BF8 /* EZAudioPlot.h */,
+				0F6303DF20FDB05D006E4BF8 /* EZAudioPlayer.h */,
+				0F6303E020FDB05D006E4BF8 /* EZAudioFloatConverter.h */,
+				0F6303E120FDB05D006E4BF8 /* EZOutput.h */,
+				0F6303E220FDB05D006E4BF8 /* EZRecorder.h */,
+				0F6303E320FDB05D006E4BF8 /* EZAudioFFT.m */,
+				0F6303E420FDB05D006E4BF8 /* EZAudioPlotGL.h */,
+				0F6303E520FDB05D006E4BF8 /* EZAudioFile.h */,
+				0F6303E620FDB05D006E4BF8 /* EZAudioDisplayLink.h */,
+				0F6303E720FDB05D006E4BF8 /* EZAudioDevice.h */,
+				0F6303E820FDB05D006E4BF8 /* EZPlot.m */,
+				0F6303E920FDB05D006E4BF8 /* EZAudioPlot.m */,
+				0F6303EA20FDB05D006E4BF8 /* EZAudioPlayer.m */,
+				0F6303EB20FDB05D006E4BF8 /* TPCircularBuffer.c */,
+				0F6303EC20FDB05D006E4BF8 /* EZAudioFloatData.h */,
+				0F6303ED20FDB05D006E4BF8 /* EZMicrophone.h */,
+				0F6303EE20FDB05D006E4BF8 /* EZAudio.m */,
+				0F6303EF20FDB05D006E4BF8 /* EZAudioUtilities.m */,
+				0F6303F020FDB05D006E4BF8 /* EZRecorder.m */,
+				0F6303F120FDB05D006E4BF8 /* EZOutput.m */,
+				0F6303F220FDB05D006E4BF8 /* EZAudioFloatConverter.m */,
+				0F6303F320FDB05D006E4BF8 /* EZAudioDevice.m */,
+				0F6303F420FDB05D006E4BF8 /* EZAudioDisplayLink.m */,
+				0F6303F520FDB05D006E4BF8 /* EZAudioFile.m */,
+				0F6303F620FDB05D006E4BF8 /* EZAudioPlotGL.m */,
+				0F6303F720FDB05D006E4BF8 /* EZAudioFFT.h */,
+				0F6303F820FDB05D006E4BF8 /* Info.plist */,
+				0F6303F920FDB05D006E4BF8 /* EZAudioiOS.h */,
+			);
+			path = EZAudio;
+			sourceTree = "<group>";
+		};
 		5E8FD97A1D269F5D00CF68CC = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +147,7 @@
 		5E8FD9851D269F5D00CF68CC /* ReactNativeAudioToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				0F6303D620FDB05D006E4BF8 /* EZAudio */,
 				5E8FD98F1D269F9900CF68CC /* AudioPlayer.h */,
 				5E8FD9901D269F9900CF68CC /* AudioPlayer.m */,
 				5E8FD9911D269F9900CF68CC /* AudioRecorder.h */,
@@ -154,7 +232,7 @@
 		5E8FD98A1D269F5D00CF68CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -188,7 +266,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../node_modules/react-native/**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../../react-native/React/**",
+					"$(SRCROOT)/../../../../node_modules/react-native/React/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -199,7 +280,7 @@
 		5E8FD98B1D269F5D00CF68CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -227,7 +308,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../node_modules/react-native/**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../../react-native/React/**",
+					"$(SRCROOT)/../../../../node_modules/react-native/React/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

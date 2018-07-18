@@ -9,14 +9,22 @@
 
 #import "AudioRecorder.h"
 #import "RCTEventDispatcher.h"
-//#import "RCTEventEmitter"
 #import "Helpers.h"
+
+#define tmpAudioFile @"_tmp"
 
 @import AVFoundation;
 
 @interface AudioRecorder () <AVAudioRecorderDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *recorderPool;
+
+@property (nonatomic, assign) BOOL isPaused;
+@property (nonatomic, strong) NSNumber *recorderId;
+@property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong) NSString *filePath;
+@property (nonatomic, strong) NSString *tempFilePath;
+@property (nonatomic, strong) NSDictionary *recordSetting;
 
 @end
 
@@ -149,6 +157,22 @@ RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)recorderId withCallback:(RCTResponseS
     AVAudioRecorder *recorder = [[self recorderPool] objectForKey:recorderId];
     if (recorder) {
         [recorder stop];
+    } else {
+        NSDictionary* dict = [Helpers errObjWithCode:@"notfound" withMessage:@"Recorder with that id was not found"];
+        callback(@[dict]);
+        return;
+    }
+    callback(@[[NSNull null]]);
+}
+
+RCT_EXPORT_METHOD(resume:(nonnull NSNumber *)recorderId withCallback:(RCTResponseSenderBlock)callback) {
+    AVAudioRecorder *recorder = [[self recorderPool] objectForKey:recorderId];
+    if (recorder) {
+        if (![recorder record]) {
+            NSDictionary* dict = [Helpers errObjWithCode:@"startfail" withMessage:@"Failed to start recorder"];
+            callback(@[dict]);
+            return;
+        }
     } else {
         NSDictionary* dict = [Helpers errObjWithCode:@"notfound" withMessage:@"Recorder with that id was not found"];
         callback(@[dict]);

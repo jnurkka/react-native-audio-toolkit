@@ -7,7 +7,6 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
-#import "RCTEventDispatcher.h"
 
 @interface ReactPlayer : AVPlayer
 
