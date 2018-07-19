@@ -15,15 +15,5 @@
 +(NSDictionary *) errObjWithCode:(NSString*)code withMessage:(NSString*)message;
 +(NSDictionary *)recorderSettingsFromOptions:(NSDictionary *)options;
 
-+(NSString *)absoluteDirectoryForPath:(NSString *)path;
-+(NSString *)absolutePath:(NSString *)path;
-+(BOOL)createDirectoriesForFileAtPath:(NSString *)path;
-+(BOOL)createDirectoriesForPath:(NSString *)path error:(NSError **)error;
-+(BOOL)createDirectoriesForFileAtPath:(NSString *)path error:(NSError **)error;
-+(NSString *)pathForDocumentsDirectory;
-+(NSString *)pathForDocumentsDirectoryWithPath:(NSString *)path;
-+(NSString *)pathForTemporaryDirectory;
-+(NSString *)pathForTemporaryDirectoryWithPath:(NSString *)path;
-
 @end
 
