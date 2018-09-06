@@ -82,16 +82,6 @@ RCT_EXPORT_METHOD(prepare:(nonnull NSNumber *)recorderId
     self.masterPath = [masterDirectory stringByAppendingPathComponent:self.fileName];
     self.slavePath = [slaveDirectory stringByAppendingPathComponent:self.fileName];
     
-    NSLog(@"fileName : %@", self.fileName);
-    // fileName : TLR_3d8a0ea1ae074943bfc796fd58450ddd1531882052706_20180718_00000.m4a
-    NSLog(@"filePath : %@", self.filePath);
-    //filePath : file:///var/mobile/Containers/Data/Application/73075187-5F4A-4830-968B-408E71BBFD77/Documents/todaysLetter/TLR_3d8a0ea1ae074943bfc796fd58450ddd1531882052706_20180718_00000.m4a
-    NSLog(@"directoryPath : %@", self.directoryPath);
-    // directoryPath : /Users/hojunlee/Library/Developer/CoreSimulator/Devices/FB3E5008-B9E9-4FF1-9B74-0880B7022EEA/data/Containers/Data/Application/64ADF1F1-E201-45B6-AC9E-9A25C07E72AC/Documents/todaysLetter
-    NSLog(@"masterDirectory : %@", masterDirectory);
-    // masterDirectoryPath : file:///private/var/mobile/Containers/Data/Application/73075187-5F4A-4830-968B-408E71BBFD77/tmp/master
-    NSLog(@"slaveDirectoryPath : %@", slaveDirectory);
-    // slaveDirectoryPath : file:///private/var/mobile/Containers/Data/Application/73075187-5F4A-4830-968B-408E71BBFD77/tmp/slave
     if (![FCFileManager isDirectoryItemAtPath:self.directoryPath]) {
         [FCFileManager createDirectoriesForFileAtPath:self.filePath];
         NSLog(@"create directoryPath Directories");
@@ -148,6 +138,7 @@ RCT_EXPORT_METHOD(prepare:(nonnull NSNumber *)recorderId
     }
     
     callback(@[[NSNull null], self.filePath]);
+    
 }
 
 RCT_EXPORT_METHOD(record:(nonnull NSNumber *)recorderId withCallback:(RCTResponseSenderBlock)callback) {
@@ -165,6 +156,7 @@ RCT_EXPORT_METHOD(record:(nonnull NSNumber *)recorderId withCallback:(RCTRespons
         return;
     }
     callback(@[[NSNull null]]);
+    
 }
 
 RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)recorderId withCallback:(RCTResponseSenderBlock)callback) {
@@ -178,29 +170,38 @@ RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)recorderId withCallback:(RCTResponseS
         callback(@[dict]);
         return;
     }
-    if ([[_recorderPool allValues] containsObject:recorder]) {
-        NSNumber *recordId = [self keyForRecorder:recorder];
-        [self destroyRecorderWithId:recordId];
-    }
+//    if ([[_recorderPool allValues] containsObject:recorder]) {
+//        NSNumber *recordId = [self keyForRecorder:recorder];
+//        [self destroyRecorderWithId:recordId];
+//    }
     callback(@[[NSNull null]]);
+    
 }
 
 RCT_EXPORT_METHOD(resume:(nonnull NSNumber *)recorderId withCallback:(RCTResponseSenderBlock)callback) {
     
-    // Initialize a new recorder
-    AVAudioRecorder *recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:self.slavePath] settings:self.setting error:nil];
+    AVAudioRecorder *recorder = [[self recorderPool] objectForKey:recorderId];
     if (!recorder) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail" withMessage:@"Failed to initialize recorder"];
-        callback(@[dict]);
-        return;
+        // Initialize a new recorder
+        recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:self.slavePath] settings:self.setting error:nil];
+        if (!recorder) {
+            NSDictionary* dict = [Helpers errObjWithCode:@"notfound" withMessage:@"Recorder with that id was not found"];
+            callback(@[dict]);
+            return;
+        }
+        recorder.delegate = self;
+        [[self recorderPool] setObject:recorder forKey:recorderId];
+        BOOL success = [recorder prepareToRecord];
+        if (!success) {
+            [self destroyRecorderWithId:recorderId];
+            NSDictionary* dict = [Helpers errObjWithCode:@"preparefail" withMessage:@"Failed to prepare recorder. Settings\
+                                  are probably wrong."];
+            callback(@[dict]);
+            return;
+        }
     }
-    recorder.delegate = self;
-    [[self recorderPool] setObject:recorder forKey:recorderId];
-    BOOL success = [recorder prepareToRecord];
-    if (!success) {
-        [self destroyRecorderWithId:recorderId];
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail" withMessage:@"Failed to prepare recorder. Settings\
-                              are probably wrong."];
+    if (![recorder record]) {
+        NSDictionary* dict = [Helpers errObjWithCode:@"startfail" withMessage:@"Failed to start recorder"];
         callback(@[dict]);
         return;
     }

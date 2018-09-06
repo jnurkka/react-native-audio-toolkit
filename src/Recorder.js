@@ -200,10 +200,6 @@ export default class Recorder extends EventEmitter {
    * @return {any}
    */
   resume(callback?: Callback): Promise<void> {
-    if (Platform.OS === 'ios') {
-      return this.record(callback);
-    }
-
     const promise = new Promise(((resolve, reject) => {
       if (this.isPaused) {
         RCTAudioRecorder.resume(this._recorderId, (err) => {
