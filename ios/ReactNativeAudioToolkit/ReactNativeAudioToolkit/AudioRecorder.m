@@ -180,6 +180,23 @@ RCT_EXPORT_METHOD(stop:(nonnull NSNumber *)recorderId withCallback:(RCTResponseS
 
 RCT_EXPORT_METHOD(resume:(nonnull NSNumber *)recorderId withCallback:(RCTResponseSenderBlock)callback) {
     
+    // Checking audio session
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    if (audioSession.category != AVAudioSessionCategoryRecord) {
+        NSError *error = nil;
+        [audioSession setCategory:AVAudioSessionCategoryRecord error:&error];
+        if (error) {
+            callback(@[[Helpers errObjWithCode:@"preparefail" withMessage:@"Failed to set audio session category"]]);
+            return;
+        }
+        // Set audio session active
+        [audioSession setActive:YES error:&error];
+        if (error) {
+            callback(@[[Helpers errObjWithCode:@"preparefail" withMessage:[NSString stringWithFormat:@"Could not set audio session active, error: %@", error]]]);
+            return;
+        }
+    }
+    
     AVAudioRecorder *recorder = [[self recorderPool] objectForKey:recorderId];
     if (!recorder) {
         // Initialize a new recorder
@@ -202,11 +219,6 @@ RCT_EXPORT_METHOD(resume:(nonnull NSNumber *)recorderId withCallback:(RCTRespons
     }
     if (![recorder record]) {
         NSDictionary* dict = [Helpers errObjWithCode:@"startfail" withMessage:@"Failed to start recorder"];
-        callback(@[dict]);
-        return;
-    }
-    if (![recorder record]) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"resume fail" withMessage:@"Failed to resume recorder"];
         callback(@[dict]);
         return;
     }
@@ -286,12 +298,6 @@ RCT_EXPORT_METHOD(destroy:(nonnull NSNumber *)recorderId withCallback:(RCTRespon
         }
     }
 }
-
-//- (void)checkingFiles {
-//    NSLog(@"attributes result: %@", [[NSFileManager defaultManager] attributesOfItemAtPath:self.filePath error:nil]);
-//    NSLog(@"attributes master: %@", [[NSFileManager defaultManager] attributesOfItemAtPath:self.masterPath error:nil]);
-//    NSLog(@"attributes slave: %@", [[NSFileManager defaultManager] attributesOfItemAtPath:self.slavePath error:nil]);
-//}
 
 - (void)appendingAudioMasterFileURL:(NSURL *)masterURL andSlaveURL:(NSURL *)slaveURL {
     
