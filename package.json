@@ -1,5 +1,5 @@
 {
-  "name": "jnurkka/react-native-audio-toolkit",
+  "name": "react-native-audio-toolkit",
   "version": "1.1.0",
   "description": "Cross-platform audio library for React Native. Forked from https://github.com/futurice/react-native-audio-toolkit.git",
   "repository": {
