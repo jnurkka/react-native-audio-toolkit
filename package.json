@@ -1,10 +1,10 @@
 {
-  "name": "@ybrain/react-native-audio-toolkit",
+  "name": "jnurkka/react-native-audio-toolkit",
   "version": "1.1.0",
   "description": "Cross-platform audio library for React Native. Forked from https://github.com/futurice/react-native-audio-toolkit.git",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YBRAIN/react-native-audio-toolkit.git"
+    "url": "git+https://github.com/jnurkka/react-native-audio-toolkit.git"
   },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -23,9 +23,9 @@
     "flow-bin": "^0.67.0"
   },
   "bugs": {
-    "url": "https://github.com/YBRAIN/react-native-audio-toolkit/issues"
+    "url": "https://github.com/jnurkka/react-native-audio-toolkit/issues"
   },
-  "homepage": "https://github.com/YBRAIN/react-native-audio-toolkit#readme",
+  "homepage": "https://github.com/jnurkka/react-native-audio-toolkit#readme",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -45,5 +45,5 @@
     "mp3",
     "mp4"
   ],
-  "author": "mswokk@gmail.com"
+  "author": "jaakkonurkka@gmail.com"
 }
